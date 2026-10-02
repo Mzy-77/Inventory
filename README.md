@@ -1,2 +1,2 @@
 # Inventory
-Inventory Management Api
+Inventory Management Backend
