@@ -4,7 +4,8 @@ import {
     deleteProduct,
     getAllProducts,
     getProductById,
-    updateProduct
+    updateProduct,
+    GetTotalProducts
 } from '../service/product.service.js';
 //get /product
 export const getProducts = (req: Request, res: Response) => {
@@ -101,3 +102,28 @@ export const deleteProductController = (req: Request, res: Response) => {
         message: "Product deleted"
     });
 };
+
+// get total products
+
+export function getTotalProducts  (req: Request, res: Response)  {
+    try{
+        const totalProducts =  getAllProducts();
+
+        if (!totalProducts) {
+            return res.status(404).json({
+                message: "No product found"
+            })
+        }
+
+        res.json({
+            message: "Total products retrieved",
+            data: totalProducts
+        })
+    }catch (e) {
+        console.error(e);
+        res.status(404).json({
+            message: "No product found"
+        })
+
+    }
+}
