@@ -1,0 +1,26 @@
+services:
+  app:
+    image: node:22-bookworm
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - ./app/node_modules
+    environment:
+      DATABASE_URL: postgresql://postgresql:postgresql@db:5432/inventory
+    depends_on:
+      - db
+    command: npm run start
+  db:
+    image: postgres:18
+    environment:
+        POSTGRES_USER: postgresql
+        POSTGRES_PASSWORD: postgresql
+        POSTGRES_DB: inventory
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:var/lib/postgresql/data
+volumes:
+  postgres_data:
