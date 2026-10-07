@@ -101,3 +101,10 @@ export const deleteProductController = (req: Request, res: Response) => {
     message: "Product deleted"
   });
 };
+export const getTotalProducts = (req: Request, res: Response) => {
+  const total = getAllProducts().length;
+  res.json({
+    message: "Total products retrieved",
+    data: { total }
+  });
+};
