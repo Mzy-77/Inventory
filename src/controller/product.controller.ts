@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import {
-  createProduct,
-  deleteProduct,
-  getAllProducts,
-  getProductById,
-  updateProduct
+    createProduct,
+    deleteProduct,
+    getAllProducts,
+    getProductById,
+    updateProduct
 } from '../service/product.service.js';
 //get /product
 export const getProducts = (res: Response) => {

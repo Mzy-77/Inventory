@@ -1,4 +1,5 @@
 import {Product, CreateProduct} from '../types/product.type.js';
+import {getTotalProducts} from "../controller/product.controller.js";
 const products: Map<number, Product> = new Map();
 
 let nextId = 1;
@@ -45,4 +46,11 @@ export const deleteProduct = (id: number): boolean => {
     return products.delete(id);
 };
 
+export  function  GetTotalProducts ()  {
+    let total = 0;
+     products.forEach((product: Product) => {
+        total +=1
+    })
+    return total
+}
 export { getAllProducts, getProductById, createProduct };
